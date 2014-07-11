@@ -1,0 +1,46 @@
+{
+  "name": "stream-from-iterator",
+  "version": "0.1.0",
+  "description": "Create streams from es6 iterators",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/schnittstabil/stream-from-iterator.git"
+  },
+  "keywords": [
+    "readable",
+    "object",
+    "stream",
+    "gulpfriendly",
+    "adapter",
+    "to stream",
+    "es6",
+    "iterator"
+  ],
+  "author": "Michael Mayer <michael@schnittstabil.de> (https://github.com/schnittstabil)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/schnittstabil/stream-from-iterator/issues"
+  },
+  "homepage": "https://github.com/schnittstabil/stream-from-iterator",
+  "engines": {
+    "node": "^0.11 || ^0.10"
+  },
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "test": "./node_modules/gulp/bin/gulp.js && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+  },
+  "devDependencies": {
+    "coveralls": "^2.11.1",
+    "gulp": "^3.8.6",
+    "gulp-istanbul": "^0.2.0",
+    "gulp-jscs": "^0.6.0",
+    "gulp-jshint": "^1.7.1",
+    "gulp-mocha": "^0.5.0",
+    "merge-stream": "^0.1.5",
+    "stream-recorder": "^0.3.0",
+    "vinyl": "^0.2.3"
+  }
+}
