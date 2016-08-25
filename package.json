@@ -1,46 +1,50 @@
 {
   "name": "stream-from-iterator",
   "version": "0.1.0",
-  "description": "Create streams from es6 iterators",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/schnittstabil/stream-from-iterator.git"
-  },
+  "description": "Create streams from ES2015 iterators",
   "keywords": [
     "readable",
     "object",
     "stream",
-    "gulpfriendly",
     "adapter",
     "to stream",
     "es6",
+    "es2015",
     "iterator"
   ],
-  "author": "Michael Mayer <michael@schnittstabil.de> (https://github.com/schnittstabil)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/schnittstabil/stream-from-iterator/issues"
+  "repository": "schnittstabil/stream-from-iterator",
+  "author": {
+    "name": "Michael Mayer",
+    "email": "michael@schnittstabil.de",
+    "url": "schnittstabil.de"
   },
-  "homepage": "https://github.com/schnittstabil/stream-from-iterator",
+  "license": "MIT",
   "engines": {
-    "node": "^0.11 || ^0.10"
+    "node": ">=4"
   },
   "main": "index.js",
   "files": [
     "index.js"
   ],
-  "scripts": {
-    "test": "./node_modules/gulp/bin/gulp.js && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
-  },
   "devDependencies": {
-    "coveralls": "^2.11.1",
-    "gulp": "^3.8.6",
-    "gulp-istanbul": "^0.2.0",
-    "gulp-jscs": "^0.6.0",
-    "gulp-jshint": "^1.7.1",
-    "gulp-mocha": "^0.5.0",
-    "merge-stream": "^0.1.5",
+    "ava": "^0.16.0",
+    "coveralls": "^2.11.12",
+    "es6-iterator": "^2.0.0",
+    "execa": "^0.4.0",
+    "nyc": "^8.1.0",
+    "rimraf": "^2.5.4",
     "stream-recorder": "^0.3.0",
-    "vinyl": "^0.2.3"
+    "xo": "^0.16.0"
+  },
+  "xo": {
+    "rules": {
+      "ava/test-ended": "off"
+    }
+  },
+  "scripts": {
+    "clean": "rimraf .nyc_output/ coverage/",
+    "test": "xo && ava",
+    "test-cover": "xo && nyc --all ava",
+    "test-cover-html": "npm run test-cover && nyc report --reporter=html"
   }
 }
