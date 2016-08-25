@@ -10,43 +10,48 @@ npm install stream-from-iterator --save
 
 ## Usage
 
-As long as Iterators are not available in Node:
-```
-npm install es6-iterator
+```js
+import StreamFromIterator from 'stream-from-iterator';
+
+function * strRange(start, end) {
+	for (var i = start; i <= end; i++) {
+		yield String(i);
+	}
+}
+
+new StreamFromIterator(strRange(0, 9))
+	.pipe(process.stdout); // output: 0123456789
 ```
 
 ### Stream iterating over `String | Buffer`s
 
 ```js
 import StreamFromIterator from 'stream-from-iterator';
-import Iterator from 'es6-iterator';
 
-new StreamFromIterator(new Iterator(['some', ' ', 'strings']))
-  .pipe(process.stdout); // output: some strings
+new StreamFromIterator(['some', ' ', 'strings'].values())
+	.pipe(process.stdout); // output: some strings
 
-new StreamFromIterator(new Iterator([new Buffer('some'), ' mixed ', new Buffer('strings')]))
-  .pipe(process.stdout); // output: some mixed strings
+new StreamFromIterator([new Buffer('some'), ' mixed ', new Buffer('strings')].values())
+	.pipe(process.stdout); // output: some mixed strings
 ```
 
 ### Stream iterating over (arbitrary) Javascript Values
 
 ```js
 import StreamFromIterator from 'stream-from-iterator';
-import Iterator from 'es6-iterator';
 
 var i = 0;
-StreamFromIterator.obj(new Iterator(['some', 42, 'mixed', 'array', () => {}]))
-  .on('data', data => {
-    console.log(i++ + ': ' + typeof data);
-    /* outputs:
-      0: string
-      1: number
-      2: string
-      3: string
-      4: function
-    */
-  });
-
+StreamFromIterator.obj(['some', 42, 'mixed', 'array', () => {}].values())
+	.on('data', data => {
+		console.log(i++ + ': ' + typeof data);
+		/* outputs:
+			0: string
+			1: number
+			2: string
+			3: string
+			4: function
+		*/
+	});
 ```
 
 ## API

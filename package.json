@@ -10,7 +10,8 @@
     "to stream",
     "es6",
     "es2015",
-    "iterator"
+    "iterator",
+    "generator"
   ],
   "repository": "schnittstabil/stream-from-iterator",
   "author": {
@@ -37,9 +38,16 @@
     "xo": "^0.16.0"
   },
   "xo": {
-    "rules": {
-      "ava/test-ended": "off"
-    }
+    "overrides": [
+      {
+        "files": "test/*.js",
+        "rules": {
+          "ava/test-ended": "off",
+          "no-extend-native": "off",
+          "no-use-extend-native/no-use-extend-native": "off"
+        }
+      }
+    ]
   },
   "scripts": {
     "clean": "rimraf .nyc_output/ coverage/",
