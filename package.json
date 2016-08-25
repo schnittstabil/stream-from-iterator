@@ -1,6 +1,6 @@
 {
   "name": "stream-from-iterator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Create streams from ES2015 iterators",
   "keywords": [
     "readable",
